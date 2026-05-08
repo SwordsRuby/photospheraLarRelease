@@ -8,9 +8,9 @@
 
     <div class="container flex-space-between mobile-column-reverse">
         <div class="flex-column main-title-block">
-            <h2 class="main-title wrap">Мои изображения</h2>
+            <h2 class="main-title wrap">Публичные изображения</h2>
             <div class="main-line"></div>
-            <p class="about-us_text mt-10">Все ваши изображения (включая приватные и на модерации)</p>
+            <p class="about-us_text mt-10">Эти изображения видны всем</p>
         </div>
         <div class="gap-block-10px mobile-column">
             <a href="{{ route('user.albums.index') }}" class="black-button width-260 user-chosen-button">Мои альбомы</a>

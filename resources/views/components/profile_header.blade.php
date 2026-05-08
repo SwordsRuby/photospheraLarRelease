@@ -17,11 +17,11 @@
     <div class="admin-menu-links gap-block-20px flex-wrap mb-20">
         <a href="{{ route('user.added') }}"
             class="admin-link {{ request()->routeIs('user.added') ? 'admin-link-active' : '' }}">
-            Мои изображения
+            Публичные изображения
         </a>
         <a href="{{ route('user.private') }}"
             class="admin-link {{ request()->routeIs('user.private') ? 'admin-link-active' : '' }}">
-            Приватные
+            Приватные изображения
         </a>
         <a href="{{ route('user.albums.index') }}"
             class="admin-link {{ request()->routeIs('user.albums.*') ? 'admin-link-active' : '' }}">

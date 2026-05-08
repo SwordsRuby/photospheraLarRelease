@@ -85,10 +85,12 @@
                 </div>
 
                 @if ($image->category)
-                    <div class="info-section">
-                        <div class="section-title">Категория</div>
-                        <div class="category-badge">{{ $image->category->name }}</div>
-                    </div>
+                    <a href="{{ route('images.index', ['category' => $image->category_id]) }}">
+                        <div class="info-section">
+                            <div class="section-title">Категория</div>
+                            <div class="category-badge">{{ $image->category->name }}</div>
+                        </div>
+                    </a>
                 @endif
 
                 @if ($image->tags->count() > 0)
@@ -96,7 +98,9 @@
                         <div class="section-title">Теги</div>
                         <div class="tags-list">
                             @foreach ($image->tags as $tag)
-                                <span class="tag">#{{ $tag->title }}</span>
+                                <a href="{{ route('images.index', ['search' => $tag->title]) }}">
+                                    <span class="tag">#{{ $tag->title }}</span>
+                                </a>
                             @endforeach
                         </div>
                     </div>
@@ -385,6 +389,7 @@
             border-radius: 15px;
             font-size: 13px;
             text-decoration: none;
+            cursor: pointer;
         }
 
         .tag:hover {

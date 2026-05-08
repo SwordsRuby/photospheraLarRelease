@@ -12,7 +12,12 @@
             <div class="main-line"></div>
             <p class="about-us_text mt-10">Эти изображения видны только вам</p>
         </div>
-        <a href="{{ route('images.create') }}" class="red-button width-260 user-chosen-button">+ Добавить изображение</a>
+        <div class="gap-block-10px mobile-column">
+            <a href="{{ route('user.albums.index') }}" class="black-button width-260 user-chosen-button">Мои альбомы</a>
+            <a href="{{ route('images.create') }}" style="min-width: 210px;" class="red-button width-260 user-chosen-button">+
+                Добавить
+                изображение</a>
+        </div>
     </div>
 
     <div class="my-40 gallery container flex-column gap-block-20px">

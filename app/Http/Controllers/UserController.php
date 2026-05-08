@@ -56,7 +56,6 @@ class UserController extends Controller
     {
         $images = $request->user()->images()
             ->with(['category', 'tags', 'albums'])
-            ->where('is_approved', true)
             ->where('is_private', true)
             ->latest()
             ->paginate(12);
