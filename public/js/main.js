@@ -1,30 +1,30 @@
-// Slider (categories on homepage)
 
 let translate = 0;
+const cards = document.querySelectorAll('.slider-card');
+let cardWith = cards[0].offsetWidth + 24;
 
 function prevButton() {
     const slider = document.querySelector('.slider-block');
     if (translate !== 0) {
-        translate += 340;
+        translate += cardWith;
         slider.style.transform = `translate(${translate}px)`;
     }
 }
 
 function nextButton() {
     const slider = document.querySelector('.slider-block');
-    const cards = document.querySelectorAll('.slider-card').length;
     let stop;
 
     if (window.matchMedia('(max-width: 810px)').matches) {
-        stop = -cards * 340 + 340;
+        stop = -cards.length * cardWith + cardWith;
     } else if (window.matchMedia('(max-width: 1210px)').matches) {
-        stop = -cards * 340 + 680;
+        stop = -cards.length * cardWith + cardWith * 2;
     } else {
-        stop = -cards * 340 + 1020;
+        stop = -cards.length * cardWith + cardWith * 3;
     }
 
     if (translate > stop) {
-        translate -= 340;
+        translate -= cardWith;
         slider.style.transform = `translate(${translate}px)`;
     } else {
         translate = stop;
