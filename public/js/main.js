@@ -295,7 +295,7 @@ function addImgF() {
 
     if (file && file.files.length) {
         if (imgFilter(file.files[0].name)) {
-            container.style.background = `url(${URL.createObjectURL(file.files[0])}) no-repeat center/cover`;
+            container.style.background = `url(${URL.createObjectURL(file.files[0])}) no-repeat center/contain`;
             if (block) block.style.display = 'none';
             if (orText) orText.style.display = 'none';
             if (urlInput) urlInput.parentElement.style.display = 'none';
@@ -372,7 +372,7 @@ function addImgCategoryF() {
 
     if (file && file.files.length) {
         if (imgCategoryFilter(file.files[0].name)) {
-            container.style.background = `url(${URL.createObjectURL(file.files[0])}) no-repeat center/cover`;
+            container.style.background = `url(${URL.createObjectURL(file.files[0])}) no-repeat center/contain`;
             if (block) block.style.display = 'none';
             if (orText) orText.style.display = 'none';
             if (urlInput) urlInput.parentElement.style.display = 'none';

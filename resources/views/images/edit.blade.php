@@ -17,7 +17,7 @@
 
             <div class="add-img-path-block gap-block-10px flex-column">
                 <div class="add-img-file-path-block flex-center" id="imagePreviewBlock"
-                    style="background: url('{{ $image->img }}') no-repeat center center; background-size: cover; min-height: 350px;">
+                    style="background: url('{{ $image->img }}') no-repeat center center; background-size: contain; min-height: 350px;">
                     <input type="file" name="image" id="add-img-file"
                         accept="image/jpeg,image/png,image/jpg,image/svg,image/webp" onchange="previewImage(this);">
                     <div class="add-img-file-path-subblock flex-column gap-block-20px" id="filePlaceholder"
