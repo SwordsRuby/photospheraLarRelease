@@ -38,7 +38,7 @@
         @else
             <div class="no-img-block flex-center gap-block-10px mobile-column">
                 <h2>У вас пока нет альбомов</h2>
-                <a href="{{ route('user.albums.create') }}" class="red-button user-chosen-button mt-20">Создать альбом</a>
+                <a href="{{ route('user.albums.create') }}" class="red-button user-chosen-button">Создать альбом</a>
             </div>
         @endif
     </div>

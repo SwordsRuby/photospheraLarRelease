@@ -23,7 +23,9 @@ class UpdateTagRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'title.required' => 'Введите название тега',
+            'title.required' => 'Название тега обязательно для заполнения',
+            'title.string' => 'Название тега должно быть строкой',
+            'title.max' => 'Название тега не может превышать 100 символов',
             'title.unique' => 'Тег с таким названием уже существует',
         ];
     }

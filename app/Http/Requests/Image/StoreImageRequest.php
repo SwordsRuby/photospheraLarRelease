@@ -18,7 +18,7 @@ class StoreImageRequest extends FormRequest
             'category_id' => 'required|exists:categories,id',
             'tags' => 'nullable|array|max:8',
             'tags.*' => 'exists:tags,id',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,svg,webp|max:5120',
             'image_url' => 'nullable|url',
         ];
     }
@@ -26,13 +26,26 @@ class StoreImageRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Введите название изображения',
+            // name
+            'name.required' => 'Название изображения обязательно для заполнения',
+            'name.string' => 'Название изображения должно быть строкой',
+            'name.max' => 'Название изображения не может превышать 50 символов',
+
+            // category_id
             'category_id.required' => 'Выберите категорию',
             'category_id.exists' => 'Выбранная категория не существует',
+
+            // tags
+            'tags.array' => 'Теги должны быть переданы массивом',
             'tags.max' => 'Максимум 8 тегов',
             'tags.*.exists' => 'Один из выбранных тегов не существует',
+
+            // image
             'image.image' => 'Файл должен быть изображением',
-            'image.max' => 'Размер изображения не должен превышать 5MB',
+            'image.mimes' => 'Изображение должно быть одного из форматов: jpeg, png, jpg, svg, webp',
+            'image.max' => 'Размер изображения не должен превышать 5120 килобайт (5MB)',
+
+            // image_url
             'image_url.url' => 'Некорректный URL',
         ];
     }

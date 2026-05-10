@@ -26,11 +26,20 @@ class UpdateProfileRequest extends FormRequest
     public function messages(): array
     {
         return [
+            // login
             'login.required' => 'Введите логин',
+            'login.string' => 'Логин должен быть строкой',
+            'login.max' => 'Логин не может превышать 50 символов',
             'login.unique' => 'Пользователь с таким логином уже существует',
+
+            // password
+            'password.string' => 'Пароль должен быть строкой',
             'password.min' => 'Пароль должен содержать минимум 8 символов',
             'password.confirmed' => 'Пароли не совпадают',
+
+            // image
             'image.image' => 'Файл должен быть изображением',
+            'image.mimes' => 'Изображение должно быть одного из форматов: jpeg, png, jpg, svg, webp',
             'image.max' => 'Размер изображения не должен превышать 2MB',
         ];
     }

@@ -22,7 +22,10 @@ class LoginRequest extends FormRequest
     public function messages(): array
     {
         return [
+            // loginAuth
             'loginAuth.required' => 'Введите логин',
+
+            // passwordAuth
             'passwordAuth.required' => 'Введите пароль',
         ];
     }

@@ -51,7 +51,7 @@
         @else
             <div class="no-img-block flex-center gap-block-10px mobile-column">
                 <h2>Приватные изображения не найдены</h2>
-                <a href="{{ route('images.create') }}" class="red-button user-chosen-button mt-20">Добавить изображение</a>
+                <a href="{{ route('images.create') }}" class="red-button user-chosen-button">Добавить изображение</a>
             </div>
         @endif
     </div>

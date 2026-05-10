@@ -59,7 +59,6 @@ class WatermarkService
             $width = $image->width();
             $height = $image->height();
             
-            // Размер шрифта - увеличен
             $fontSize = min($width, $height) / 10;
             $fontSize = max(24, min($fontSize, 80));
             $smallFontSize = $fontSize * 0.5;
@@ -67,16 +66,14 @@ class WatermarkService
 
             $fontPath = public_path('fonts/arial.ttf');
             
-            // Если шрифта нет - используем системный (может не поддержать кириллицу)
             if (!file_exists($fontPath)) {
                 $fontPath = null;
             }
             
-            // === Верхний левый угол ===
             $image->text(
                 '© Фотосфера',
-                30,  // X - отступ слева
-                40,  // Y - отступ сверху
+                30,  // X 
+                40,  // Y 
                 function ($font) use ($fontSize, $fontPath) {
                     if ($fontPath) {
                         $font->filename($fontPath);
@@ -88,11 +85,10 @@ class WatermarkService
                 }
             );
             
-            // === Нижний правый угол ===
             $image->text(
                 '© Фотосфера',
-                $width - 30,  // X - отступ справа
-                $height - 30, // Y - отступ снизу
+                $width - 30,  // X 
+                $height - 30, // Y 
                 function ($font) use ($fontSize, $fontPath) {
                     if ($fontPath) {
                         $font->filename($fontPath);
@@ -104,7 +100,7 @@ class WatermarkService
                 }
             );
             
-            // Правильное сохранение
+            // Save
             $encoder = new JpegEncoder(quality: 85);
             $encoded = $image->encode($encoder);
             file_put_contents($outputPath, $encoded);

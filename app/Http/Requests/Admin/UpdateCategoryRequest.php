@@ -23,7 +23,9 @@ class UpdateCategoryRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Введите название категории',
+            'name.required' => 'Название категории обязательно для заполнения',
+            'name.string' => 'Название категории должно быть строкой',
+            'name.max' => 'Название категории не может превышать 100 символов',
             'name.unique' => 'Категория с таким названием уже существует',
         ];
     }

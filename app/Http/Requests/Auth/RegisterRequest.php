@@ -26,13 +26,21 @@ class RegisterRequest extends FormRequest
     public function messages(): array
     {
         return [
+            // loginRegister
             'loginRegister.required' => 'Логин обязателен',
+            'loginRegister.string' => 'Логин должен быть строкой',
             'loginRegister.max' => 'Логин не может превышать 20 символов',
             'loginRegister.unique' => 'Этот логин уже занят',
+
+            // emailRegister
             'emailRegister.required' => 'Email обязателен',
             'emailRegister.email' => 'Введите корректный email',
+            'emailRegister.max' => 'Email не может превышать 255 символов',
             'emailRegister.unique' => 'Этот email уже зарегистрирован',
+
+            // passwordRegister
             'passwordRegister.required' => 'Пароль обязателен',
+            'passwordRegister.string' => 'Пароль должен быть строкой',
             'passwordRegister.min' => 'Пароль должен содержать минимум 8 символов',
             'passwordRegister.confirmed' => 'Пароли не совпадают',
         ];
@@ -41,13 +49,12 @@ class RegisterRequest extends FormRequest
     protected function failedValidation(Validator $validator)
     {
         $errors = $validator->errors();
-        
-        // Сохраняем ошибки в сессию и добавляем флаг для открытия модального окна
+
         throw new HttpResponseException(
             redirect()->back()
                 ->withErrors($validator)
                 ->withInput()
-                ->with('showRegModal', true)  // КЛЮЧЕВОЙ ФЛАГ
+                ->with('showRegModal', true)
         );
     }
 }

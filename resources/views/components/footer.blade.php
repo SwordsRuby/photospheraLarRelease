@@ -13,7 +13,7 @@
                     Фотосфера — платформа для обмена изображениями, где каждый может найти вдохновение и поделиться своими работами.
                 </p>
                 <div class="footer-social">
-                    <a class="link-social-media flex-center max-link" href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer">
+                    <a class="link-social-media flex-center max-link" href="https://web.max.ru/" target="_blank" rel="noopener noreferrer">
                         <img src="{{ asset('img/footer/max.svg') }}" alt="Max">
                     </a>
                     <a class="link-social-media flex-center" href="https://web.telegram.org/a/" target="_blank" rel="noopener noreferrer">
