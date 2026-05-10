@@ -1691,6 +1691,10 @@ footer {
         max-width: 366px !important;
     }
 
+    .admin-card {
+        max-width: 366px !important;
+    }
+
     :root {
         --main-small-img: 242px;
         --main-average-img: 371px;
@@ -1711,6 +1715,10 @@ footer {
     }
 
     .admin-img-card {
+        max-width: 286px !important;
+    }
+
+    .admin-card {
         max-width: 286px !important;
     }
 
