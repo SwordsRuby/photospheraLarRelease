@@ -13,7 +13,7 @@
             <p class="about-us_text mt-10">Изображения, которые вы добавили в избранное</p>
         </div>
 
-        <div class="gap-block-10px mobile-column">
+        <div class="gap-block-10px mobile-column width-100-mobile">
             <a href="{{ route('user.added') }}" class="black-button width-260 user-chosen-button">Мои изображения</a>
             <a href="{{ route('user.albums.index') }}" class="black-button width-260 user-chosen-button">Мои альбомы</a>
         </div>

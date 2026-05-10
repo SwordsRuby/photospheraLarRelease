@@ -38,7 +38,7 @@
                 <div class="main-line"></div>
             </div>
 
-            <div class="tablet-2-col gap-block-20px mt-40 my-20">
+            <div class="flex-wrap gap-block-20px mt-40 my-20">
                 @if ($subscription->plan !== 'pro')
                     <div class="admin-card">
                         <h3 class="admin-card-title">Pro</h3>

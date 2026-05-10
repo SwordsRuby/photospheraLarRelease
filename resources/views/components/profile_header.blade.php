@@ -3,12 +3,13 @@
         <img class="user-img" src="{{ asset(Auth::user()->img) }}" alt="user">
         <h3 class="user-name">{{ Auth::user()->login }}</h3>
     </div>
-    <div class="user-button-block gap-block-10px mobile-column">
-        <form method="POST" action="{{ route('logout') }}">
+    <div class="user-button-block gap-block-10px mobile-column width-100-mobile">
+        <form method="POST" action="{{ route('logout') }}" class="width-100-mobile">
             @csrf
-            <input class="black-button user-chosen-button" type="submit" value="Выйти">
+            <input class="black-button user-chosen-button width-100-mobile" type="submit" value="Выйти">
         </form>
-        <button onclick="userModal();" class="red-button user-chosen-button">Редактировать профиль</button>
+        <button onclick="userModal();" class="red-button user-chosen-button width-100-mobile">Редактировать
+            профиль</button>
     </div>
 </div>
 
@@ -89,7 +90,9 @@
             <div class="flex-space-between gap-block-10px">
                 <input class="red-button unactive-button top-modal-button modal-button" id="reg-button-form-submit"
                     type="button" disabled onclick="formSubmit(this);" value="Сохранить">
-                <button type="button" onclick="confirmAccountDelete()" class="black-button top-modal-button modal-button" style="background: #f44336;">Удалить аккаунт</button>
+                <button type="button" onclick="confirmAccountDelete()"
+                    class="black-button top-modal-button modal-button" style="background: #f44336;">Удалить
+                    аккаунт</button>
             </div>
         </form>
         <button onclick="userModal();" class="black-button modal-button">Отменить</button>

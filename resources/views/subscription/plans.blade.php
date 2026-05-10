@@ -14,7 +14,7 @@
                 увеличенным хранилищем</p>
         </div>
 
-        <div class="tablet-2-col gap-block-20px mt-60 my-40">
+        <div class="flex-wrap flex-center gap-block-20px mt-60 my-40">
             <!-- Basic plan -->
             <div class="admin-card">
                 <h3 class="admin-card-title">Базовый</h3>

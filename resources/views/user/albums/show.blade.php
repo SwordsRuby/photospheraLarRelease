@@ -15,7 +15,7 @@
                     <p class="about-us_text mt-20">{{ $album->description }}</p>
                 @endif
             </div>
-            <div class="gap-block-10px mobile-column">
+            <div class="gap-block-10px mobile-column width-100-mobile">
                 <a href="{{ route('user.albums.edit', $album->id) }}"
                     class="black-button user-chosen-button">Редактировать</a>
                 <button onclick="showDeleteAlbumModal()" class="red-button user-chosen-button">Удалить альбом</button>

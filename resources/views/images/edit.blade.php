@@ -148,16 +148,16 @@
 
                 <!-- Buttons -->
                 <div class="add-img-info-buttons gap-block-10px mobile-column">
-                    <div class="flex-space-between gap-block-10px" style="width: 100%;">
+                    <div class="flex-space-between gap-block-10px button-mobile" style="width: 100%;">
                         <a href="{{ route('user.added') }}" class="black-button add-img-button flex-center">Отменить</a>
                         <button type="submit" class="red-button add-img-button flex-center" id="submitButton">💾
                             Сохранить</button>
-                            <button type="button" onclick="showDeleteImageModal()"
+                        <button type="button" onclick="showDeleteImageModal()"
                             class="red-button add-img-button flex-center" style="background: #ff3366;">
                             🗑 Удалить
                         </button>
                     </div>
-                    
+
                 </div>
             </div>
         </form>
@@ -270,6 +270,13 @@
         @media (max-width: 768px) {
             .add-img-info-buttons {
                 margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .button-mobile {
+                display: flex;
+                flex-direction: column;
             }
         }
     </style>

@@ -131,7 +131,7 @@
                 </div>
 
                 <!-- Buttons -->
-                <div class="add-img-info-buttons gap-block-10px mobile-colum flex-center">
+                <div class="add-img-info-buttons gap-block-10px mobile-colum flex-center button-mobile">
                     <a href="{{ route('images.index') }}" class="black-button add-img-button flex-center">Отменить</a>
                     <input class="red-button add-img-button flex-center unactive-button" disabled id="button-form-submit"
                         value="📤 Добавить изображение" type="submit" onclick="formSubmit(this);">
@@ -244,6 +244,13 @@
 
             .add-img-button {
                 width: 100%;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .button-mobile {
+                display: flex;
+                flex-direction: column;
             }
         }
     </style>
