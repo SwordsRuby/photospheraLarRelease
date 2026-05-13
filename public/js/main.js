@@ -49,13 +49,10 @@ function categoriesShow() {
     if (block) block.classList.toggle('categories-filter-block-active');
 }
 
-
 // Auth / Reg modals and user action functions
 function confirmAccountDelete() {
     if (confirm('ВНИМАНИЕ! Это действие невозможно отменить. Все ваши изображения, альбомы и данные будут удалены. Вы уверены, что хотите удалить аккаунт?')) {
-        if (confirm('Последнее предупреждение: Аккаунт будет удален безвозвратно. Продолжить?')) {
-            document.getElementById('delete-account-form').submit();
-        }
+        document.getElementById('delete-account-form').submit();
     }
 }
 

@@ -129,12 +129,9 @@
                             <img src="{{ $category->img }}" alt="{{ $category->name }}"
                                 style="width: 170px; height: 170px; object-fit: cover; border-radius: 10px;">
                             <h2 class="admin-card-title">{{ $category->name }}</h2>
-                            @if ($category->id != 1)
-                                <button
-                                    onclick="openUpdateModal('{{ $category->id }}', '{{ $category->name }}', '{{ route('admin.categories.update', $category->id) }}')"
-                                    class="black-button flex-center width-100 admin-img-button">Редактировать</button>
-                            @endif
-
+                            <button
+                                onclick="openUpdateModal('{{ $category->id }}', '{{ $category->name }}', '{{ route('admin.categories.update', $category->id) }}')"
+                                class="black-button flex-center width-100 admin-img-button">Редактировать</button>
                         </div>
                     @endforeach
                 </div>
