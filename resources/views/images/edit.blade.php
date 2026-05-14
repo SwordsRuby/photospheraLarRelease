@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Редактировать изображение')
+@section('title', "Редактировать изображение - $image->name")
 
 @section('content')
     <div class="add-img-block container my-40">

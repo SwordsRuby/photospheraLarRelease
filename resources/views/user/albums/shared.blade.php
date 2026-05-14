@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $album->name . ' - Публичный альбом')
+@section('title', "Публичный альбом - $album->name")
 
 @section('content')
     <div class="container my-40">

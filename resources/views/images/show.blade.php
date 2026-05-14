@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $image->name)
+@section('title', "Изображение - $image->name" )
 
 @section('content')
     <div class="container one-img-container">

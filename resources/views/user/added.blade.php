@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Мои изображения')
+@section('title', 'Публичные изображения')
 
 @section('content')
     @include('components.profile_header')

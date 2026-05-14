@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $album->name)
+@section('title', "Альбом - $album->name")
 
 @section('content')
     @include('components.profile_header')

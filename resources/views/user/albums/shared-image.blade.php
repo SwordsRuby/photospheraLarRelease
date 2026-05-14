@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $image->name . ' - ' . $album->name)
+@section('title', "Изображение - $image->name - $album->name")
 
 @section('content')
     <div class="shared-image-container container my-40">
