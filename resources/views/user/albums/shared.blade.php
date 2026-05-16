@@ -26,7 +26,7 @@
                         <a href="{{ route('albums.shared.image', ['token' => $album->share_token, 'imageId' => $image->id]) }}"
                             class="img-block block-img-gallery-{{ ($index % 12) + 1 }}">
                             <div class="image-wrapper" style="position: relative; width: 100%; height: 100%;">
-                                <img class="gallery-img" src="{{ $image->display_img ?? $image->img }}"
+                                <img class="gallery-img" src="{{ $image->img }}"
                                     alt="{{ $image->name }}">
 
                                 <div class="image-overlay">

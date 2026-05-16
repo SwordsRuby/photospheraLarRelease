@@ -15,7 +15,7 @@
         <!-- Main image content -->
         <div class="shared-image-main">
             <div class="shared-image-wrapper">
-                <img src="{{ $displayImage ?? $image->img }}" alt="{{ $image->name }}" class="shared-image">
+                <img src="{{ $image->img }}" alt="{{ $image->name }}" class="shared-image">
 
                 <div class="button-img-block-shared">
                     @auth
@@ -23,11 +23,6 @@
                             class="red-button button-for-img-shared flex-center" style="min-width: 140px;">
                             📥 Скачать
                         </a>
-                    @else
-                        <button type="button" onclick="auth();"
-                            class="red-button button-for-img-shared flex-center download-button">
-                            🔒 Войдите чтобы скачать
-                        </button>
                     @endauth
 
                     <div class="shared-img-subblock">
@@ -63,9 +58,6 @@
 
                 @if ($image->is_private)
                     <div class="status-badge private-image-shared">🔒 Приватное изображение</div>
-                @endif
-                @if (!$image->is_approved)
-                    <div class="status-badge pending-image-shared">⏳ На модерации</div>
                 @endif
             </div>
 

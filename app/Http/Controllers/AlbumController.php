@@ -351,13 +351,6 @@ class AlbumController extends Controller
             ->latest()
             ->get();
 
-        // Apply watermark for guests
-        if (!Auth::check()) {
-            $images->each(function ($image) {
-                $image->display_img = $this->watermarkService->getWatermarkedImage($image->img);
-            });
-        }
-
         return view('user.albums.shared', compact('album', 'images'));
     }
 
@@ -376,7 +369,6 @@ class AlbumController extends Controller
             abort(404, 'Альбом не найден или ссылка недействительна');
         }
 
-        // Get the image - must belong to album and be approved
         $image = Image::where('id', $imageId)
             ->where('is_approved', true)
             ->whereHas('albums', function ($query) use ($album) {
@@ -389,10 +381,7 @@ class AlbumController extends Controller
             abort(404, 'Изображение не найдено в этом альбоме');
         }
 
-        $displayImage = null;
-        if (!Auth::check()) {
-            $displayImage = $this->watermarkService->getWatermarkedImage($image->img);
-        }
+        $displayImage = $image->img;
 
         $imageIds = $album->images()
             ->where('images.is_approved', true)
@@ -410,17 +399,11 @@ class AlbumController extends Controller
                 $prevImage = Image::where('id', $imageIds[$currentIndex - 1])
                     ->with(['category', 'tags'])
                     ->first();
-                if (!Auth::check() && $prevImage) {
-                    $prevImage->img = $this->watermarkService->getWatermarkedImage($prevImage->img);
-                }
             }
             if ($currentIndex < count($imageIds) - 1) {
                 $nextImage = Image::where('id', $imageIds[$currentIndex + 1])
                     ->with(['category', 'tags'])
                     ->first();
-                if (!Auth::check() && $nextImage) {
-                    $nextImage->img = $this->watermarkService->getWatermarkedImage($nextImage->img);
-                }
             }
         }
 

@@ -113,7 +113,7 @@ class ImageController extends Controller
             'name' => $request->name,
             'category_id' => $request->category_id,
             'author_id' => $request->user()->id,
-            'is_approved' => false,
+            'is_approved' => $request->boolean('is_private', false),
             'is_private' => $request->boolean('is_private', false),
         ]);
 
@@ -139,7 +139,7 @@ class ImageController extends Controller
             'storage_used' => $subscription->storage_used + $actualFileSize
         ]);
 
-        return to_route('images.index')->with('success', 'Изображение успешно добавлено и ожидает модерации');
+        return to_route('images.index')->with('success', $request->boolean('is_private', false) ? 'Изображение успешно добавлено' : 'Изображение успешно добавлено и ожидает модерации' );
     }
 
     /**
@@ -205,8 +205,8 @@ class ImageController extends Controller
         $image->update([
             'name' => $request->name,
             'category_id' => $request->category_id,
-            'is_approved' => false,
-            'is_private' => $request->boolean('is_private', $image->is_private),
+            'is_approved' => $request->boolean('is_private', false),
+            'is_private' => $request->boolean('is_private', false),
         ]);
 
         if ($request->hasFile('image') || $request->filled('image_url')) {
@@ -233,7 +233,7 @@ class ImageController extends Controller
             }
         }
 
-        return to_route('user.added')->with('success', 'Изображение обновлено и отправлено на модерацию');
+        return to_route('user.added')->with('success', $request->boolean('is_private', false) ? 'Изображение обновлено' : 'Изображение обновлено и отправлено на модерацию');
     }
 
     /**

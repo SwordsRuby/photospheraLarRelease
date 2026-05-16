@@ -59,48 +59,38 @@ class WatermarkService
             $width = $image->width();
             $height = $image->height();
             
-            $fontSize = min($width, $height) / 10;
-            $fontSize = max(24, min($fontSize, 80));
-            $smallFontSize = $fontSize * 0.5;
+            $fontSize = min($width, $height) / 12;
+            $fontSize = max(28, min($fontSize, 100));
             
-
             $fontPath = public_path('fonts/arial.ttf');
             
             if (!file_exists($fontPath)) {
                 $fontPath = null;
             }
             
+            $angle = rad2deg(atan2($height, $width));
+            
+            $centerX = $width / 2;
+            $centerY = $height / 2;
+            
+            $watermarkText = '© Фотосфера';
+            
             $image->text(
-                '© Фотосфера',
-                30,  // X 
-                40,  // Y 
-                function ($font) use ($fontSize, $fontPath) {
+                $watermarkText,
+                $centerX,
+                $centerY,
+                function ($font) use ($fontSize, $fontPath, $angle) {
                     if ($fontPath) {
                         $font->filename($fontPath);
                     }
                     $font->size($fontSize);
-                    $font->color('rgba(255, 255, 255, 0.75)');
-                    $font->align('left');
-                    $font->valign('top');
+                    $font->color('rgba(255, 255, 255, 0.45)');
+                    $font->align('center');
+                    $font->valign('middle');
+                    $font->angle($angle);
                 }
             );
             
-            $image->text(
-                '© Фотосфера',
-                $width - 30,  // X 
-                $height - 30, // Y 
-                function ($font) use ($fontSize, $fontPath) {
-                    if ($fontPath) {
-                        $font->filename($fontPath);
-                    }
-                    $font->size($fontSize);
-                    $font->color('rgba(255, 255, 255, 0.6)');
-                    $font->align('right');
-                    $font->valign('bottom');
-                }
-            );
-            
-            // Save
             $encoder = new JpegEncoder(quality: 85);
             $encoded = $image->encode($encoder);
             file_put_contents($outputPath, $encoded);

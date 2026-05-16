@@ -131,6 +131,7 @@ class AdminController extends Controller
     {
         $images = Image::with(['author', 'category', 'tags'])
             ->when($request->filled('search'), fn($q) => $q->where('name', 'like', "%{$request->search}%"))
+            ->where('is_private', false)
             ->orderBy('is_approved', 'asc')
             ->latest()
             ->get();

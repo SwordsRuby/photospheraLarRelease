@@ -32,12 +32,6 @@
                             <button class="red-button button-for-img">Редактировать</button>
                         </div>
 
-                        @if (!$image->is_approved)
-                            <div class="status-badge pending"
-                                style="position: absolute; top: 10px; left: 10px; background: rgba(255, 165, 0, 0.9); padding: 5px 10px; border-radius: 20px; font-size: 12px; color: white;">
-                                ⏳ На модерации
-                            </div>
-                        @endif
                         <div class="status-badge private"
                             style="position: absolute; top: 10px; right: 10px; background: rgba(99, 102, 241, 0.9); padding: 5px 10px; border-radius: 20px; font-size: 12px; color: white;">
                             🔒 Приватное
