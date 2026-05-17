@@ -24,6 +24,7 @@ class User extends Authenticatable
         'img',
         'is_moderator',
         'is_banned',
+        'ban_reason',
         'email_verified_at',
         'verification_code',
         'verification_code_expires_at',
@@ -134,15 +135,15 @@ class User extends Authenticatable
     public function getActiveSubscriptionAttribute()
     {
         $subscription = $this->subscription()->first();
-        
+
         if ($subscription && !$subscription->isExpired()) {
             return $subscription;
         }
-        
+
         if (!$subscription || $subscription->isExpired()) {
             return $this->createBasicSubscription();
         }
-        
+
         return $subscription;
     }
 
@@ -154,7 +155,7 @@ class User extends Authenticatable
     public function createBasicSubscription()
     {
         Subscription::where('user_id', $this->id)->update(['is_active' => false]);
-        
+
         return Subscription::create([
             'user_id' => $this->id,
             'plan' => 'basic',
@@ -232,7 +233,7 @@ class User extends Authenticatable
         $this->verification_code = $code;
         $this->verification_code_expires_at = now()->addMinutes(15);
         $this->save();
-        
+
         return $code;
     }
 
@@ -244,18 +245,30 @@ class User extends Authenticatable
      */
     public function verifyCode($code)
     {
-        if ($this->verification_code === $code && 
-            $this->verification_code_expires_at && 
-            now()->lessThan($this->verification_code_expires_at)) {
-            
+        if (
+            $this->verification_code === $code &&
+            $this->verification_code_expires_at &&
+            now()->lessThan($this->verification_code_expires_at)
+        ) {
+
             $this->email_verified_at = now();
             $this->verification_code = null;
             $this->verification_code_expires_at = null;
             $this->save();
-            
+
             return true;
         }
-        
+
         return false;
+    }
+
+    /**
+     * Get the ban reason with fallback default.
+     *
+     * @return string
+     */
+    public function getBanReasonAttribute($value)
+    {
+        return $value ?? 'не соблюдение правил сообщества';
     }
 }

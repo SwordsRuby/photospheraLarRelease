@@ -188,18 +188,19 @@ class AdminController extends Controller
         $users = User::where('is_moderator', false)
             ->when($request->filled('search'), fn($q) => $q->where('login', 'like', "%{$request->search}%"))
             ->latest()
-            ->get();
+            ->paginate(20);
 
         return view('admin.users', compact('users'));
     }
 
     /**
-     * Ban a user.
+     * Ban a user with reason.
      *
+     * @param Request $request
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function banUser(int $id)
+    public function banUser(Request $request, int $id)
     {
         $user = User::findOrFail($id);
 
@@ -207,7 +208,14 @@ class AdminController extends Controller
             return back()->with('error', 'Нельзя забанить самого себя');
         }
 
-        $user->update(['is_banned' => true]);
+        $request->validate([
+            'ban_reason' => 'required|string|max:100',
+        ]);
+
+        $user->update([
+            'is_banned' => true,
+            'ban_reason' => $request->ban_reason,
+        ]);
 
         return back()->with('success', 'Пользователь забанен');
     }
@@ -221,10 +229,14 @@ class AdminController extends Controller
     public function unbanUser(int $id)
     {
         $user = User::findOrFail($id);
-        $user->update(['is_banned' => false]);
+        $user->update([
+            'is_banned' => false,
+            'ban_reason' => null,
+        ]);
 
         return back()->with('success', 'Бан снят');
     }
+
 
     //  MODERATORS MANAGEMENT 
 

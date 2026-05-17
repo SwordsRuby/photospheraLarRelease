@@ -11,7 +11,7 @@
                 <div class="search-block gap-block-20px">
                     <img class="search-img" src="{{ asset('img/main/search.svg') }}" alt="search">
                     <input value="{{ request('search') }}" autocomplete="off" class="search-input" type="search"
-                        placeholder="Поиск" name="search">
+                        placeholder="Поиск..." name="search">
                 </div>
             </form>
         </div>

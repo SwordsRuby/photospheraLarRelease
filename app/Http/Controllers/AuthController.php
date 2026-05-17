@@ -19,6 +19,12 @@ class AuthController extends Controller
      * @param LoginRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
+    /**
+     * Handle user login attempt.
+     *
+     * @param LoginRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function login(LoginRequest $request)
     {
         $credentials = [
@@ -54,8 +60,11 @@ class AuthController extends Controller
             Auth::logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
+
+            $banReason = $user->ban_reason;
+
             return redirect()->back()
-                ->withErrors(['loginAuth' => 'Ваш аккаунт забанен, обратитесь в поддержку'])
+                ->withErrors(['loginAuth' => "Ваш аккаунт забанен по причине: {$banReason}, обратитесь в поддержку"])
                 ->withInput($request->only('loginAuth'))
                 ->with('showAuthModal', true);
         }
