@@ -1574,6 +1574,13 @@ footer {
     color: transparent;
 }
 
+.main-title-album {
+    background: none !important;
+    -webkit-background-clip: none !important;
+    background-clip: none !important;
+    color: black !important;
+}
+
 .main-title-block-right .main-title {
     background: linear-gradient(135deg, var(--main-color-black), #444);
     -webkit-background-clip: text;

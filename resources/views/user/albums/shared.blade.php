@@ -6,7 +6,7 @@
     <div class="container my-40">
         <!-- Header with album info -->
         <div class="flex-column main-title-block text-center">
-            <h1 class="main-title wrap" style="font-size: 32px;">{{ $album->name }}</h1>
+            <h1 class="main-title wrap main-title-album" style="font-size: 32px;">{{ $album->name }}</h1>
             <div class="main-line" style="margin: 0 auto; margin-top: 10px;"></div>
             @if ($album->description)
                 <p class="about-us_text mt-20" style="text-align: center; max-width: 600px; margin: 20px auto 0;">

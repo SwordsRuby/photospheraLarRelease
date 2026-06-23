@@ -9,7 +9,7 @@
     <div class="container">
         <div class="flex-space-between mobile-column-reverse mb-20">
             <div class="flex-column main-title-block">
-                <h2 class="main-title wrap">{{ $album->name }}</h2>
+                <h2 class="main-title wrap main-title-album">{{ $album->name }}</h2>
                 <div class="main-line"></div>
                 @if ($album->description)
                     <p class="about-us_text mt-20">{{ $album->description }}</p>

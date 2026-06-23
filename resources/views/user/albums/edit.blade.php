@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="add-img-file-path-block" id="coverPreviewBlock"
-                    style="min-height: 200px; background: #D9D9D9; cursor: pointer; position: relative;">
+                    style="min-height: 400px; display: flex; align-items: center; background: #D9D9D9; cursor: pointer; position: relative; max-width: 1000px;">
                     <div class="add-img-file-path-subblock flex-center flex-column" style="height: 100%;">
                         <h3 class="file-path-subblock-title">Нажмите или перетащите новую обложку</h3>
                         <p class="file-path-subblock-text">.JPG .PNG .JPEG .WEBP (макс. 5MB)</p>
