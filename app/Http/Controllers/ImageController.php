@@ -36,7 +36,10 @@ class ImageController extends Controller
                         ->orWhereHas('tags', fn($tagQ) => $tagQ->where('title', 'like', "%{$search}%"));
                 });
             })
-            ->when($request->filled('category') && $request->category != '0', fn($q) => $q->where('category_id', $request->category))
+            ->when(
+                $request->filled('category') && $request->category != '0',
+                fn($q) => $q->where('category_id', $request->category)
+            )
             ->latest()->get();
 
         $categories = Category::orderByDesc('name')->where('id', '!=', 1)->get();
@@ -139,7 +142,8 @@ class ImageController extends Controller
             'storage_used' => $subscription->storage_used + $actualFileSize
         ]);
 
-        return to_route('images.index')->with('success', $request->boolean('is_private', false) ? 'Изображение успешно добавлено' : 'Изображение успешно добавлено и ожидает модерации' );
+        return to_route('images.index')->with('success', $request->boolean('is_private', false) 
+        ? 'Изображение успешно добавлено' : 'Изображение успешно добавлено и ожидает модерации');
     }
 
     /**

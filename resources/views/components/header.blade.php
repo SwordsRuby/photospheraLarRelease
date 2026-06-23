@@ -12,10 +12,14 @@
 
         @if (!Auth::check() || !session('headerFlag'))
             <nav class="gap-block-20px nav-none">
-                <a title="Добавить изображение" class="scale" href="{{ Auth::check() ? route('images.create') : '#' }}"
-                    onclick="{{ !Auth::check() ? 'auth(); return false;' : '' }}">
-                    <img src="{{ asset('img/header/add-image.svg') }}" alt="add-image">
-                </a>
+                @if (Auth::check())
+                    <a title="Добавить изображение" class="scale" href="{{ route('images.create') }}">
+                        <img src="{{ asset('img/header/add-image.svg') }}" alt="add-image">
+                    </a>
+                @else
+                    <img onclick="{{ !Auth::check() ? 'auth(); return false;' : '' }}" title="Добавить изображение"
+                        class="scale" src="{{ asset('img/header/add-image.svg') }}" alt="add-image">
+                @endif
                 <a title="Изображения" class="scale" href="{{ route('images.index') }}">
                     <img src="{{ asset('img/header/see-image.svg') }}" alt="see-image">
                 </a>
@@ -28,9 +32,8 @@
                         <img class="user-img-header" src="{{ asset(Auth::user()->img) }}" alt="user">
                     </a>
                 @else
-                    <a onclick="auth();" class="scale" title="Авторизация" href="#">
-                        <img src="{{ asset('img/header/user.svg') }}" alt="user">
-                    </a>
+                    <img onclick="auth();" class="scale" title="Авторизация" src="{{ asset('img/header/user.svg') }}"
+                        alt="user">
                 @endif
             </nav>
 
@@ -49,7 +52,7 @@
         <div class="container burger-block burger-none">
             <div class="flex-space-between">
                 <a href="/">
-                    <img src="{{ asset('img/logo/png/logo.png') }}" alt="" class="logo scale"
+                    <img src="{{ asset('img/logo/png/logo.png') }}" alt="logo" class="logo scale"
                         style="height: 40px;">
                 </a>
                 <div onclick="burgerMenu();" class="burger-menu">
@@ -58,12 +61,17 @@
                     <div class="menu-line menu-line-short"></div>
                 </div>
             </div>
-
-            <a class="gap-block-10px burger-link" href="{{ Auth::check() ? route('images.create') : '#' }}"
-                onclick="{{ !Auth::check() ? 'auth(); burgerMenu(); return false;' : 'burgerMenu();' }}">
-                <img src="{{ asset('img/header/add-image.svg') }}" alt="add-image">
-                Добавить изображение
-            </a>
+            @if (Auth::check())
+                <a class="gap-block-10px burger-link" href="{{ route('images.create') }}">
+                    <img src="{{ asset('img/header/add-image.svg') }}" alt="add-image">
+                    Добавить изображение
+                </a>
+            @else
+                <div class="gap-block-10px burger-link burger-link-hover"  onclick="{{ 'auth(); burgerMenu(); return false;' }}">
+                    <img src="{{ asset('img/header/add-image.svg') }}" alt="add-image">
+                    Добавить изображение
+                </div>
+            @endif
             <a class="gap-block-10px burger-link" onclick="burgerMenu();" href="{{ route('images.index') }}">
                 <img src="{{ asset('img/header/see-image.svg') }}" alt="see-image">
                 Изображения
@@ -79,10 +87,10 @@
                     {{ Auth::user()->login }}
                 </a>
             @else
-                <a class="gap-block-10px burger-link" onclick="burgerMenu(); auth();" href="#">
+                <div class="gap-block-10px burger-link burger-link-hover" onclick="burgerMenu(); auth();">
                     <img src="{{ asset('img/header/user.svg') }}" alt="user">
                     Авторизация
-                </a>
+                </div>
             @endif
         </div>
     </div>
