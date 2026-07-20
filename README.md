@@ -98,7 +98,7 @@ npm -v
 ### 1. Клонирование проекта
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/SwordsRuby/photospheraLarRelease.git
 cd photospheraLarRelease-main
 ```
 
