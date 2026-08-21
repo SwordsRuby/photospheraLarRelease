@@ -95,32 +95,19 @@ npm -v
 
 ## Установка
 
-### 1. Клонирование проекта
-
-```bash
-git clone https://github.com/SwordsRuby/photospheraLarRelease.git
-cd photospheraLarRelease-main
-```
-
-Если проект получен в виде архива, распакуйте его и перейдите в директорию проекта:
-
-```bash
-cd photospheraLarRelease-main
-```
-
-### 2. Установка PHP-зависимостей
+### 1. Установка PHP-зависимостей
 
 ```bash
 composer install
 ```
 
-### 3. Установка frontend-зависимостей
+### 2. Установка frontend-зависимостей
 
 ```bash
 npm install
 ```
 
-### 4. Настройка окружения
+### 3. Настройка окружения
 
 Создайте файл `.env`:
 
